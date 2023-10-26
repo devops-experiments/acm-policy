@@ -1,3 +1,4 @@
+Demo Plan: 
 SSO Steps:
 1. Keycload client id secret for each cluster in hub. OAuth client id secret, issuer url. 
 2. Policy propagates the secret to the managed cluster.
