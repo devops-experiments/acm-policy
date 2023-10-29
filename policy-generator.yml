@@ -1,11 +1,28 @@
 apiVersion: policy.open-cluster-management.io/v1
 kind: PolicyGenerator
 metadata:
-  name: config-data-policies
+  name: day2-policy-generator
 policyDefaults:
-  namespace: policies
-  pruneObjectBehavior: "DeleteAll"
+  namespace: acm-policies
+  remediationAction: enforce
+  placement:
+    placementRulePath: placement.yml
+    name: placement-dev
+placementBindingDefaults:
+  name: "binding-policy-day2"
 policies:
-  - name: config-data
+  - name: policy-eso-operator
     manifests:
-      - path: policy/policy-etcdencryption.yml
+      - path: policies/eso/operator
+  - name: policy-eso-secret-store
+    manifests:
+      - path: policies/eso/config/
+policySets:
+  - name: "day2"
+    description: "Policy for Day 2 operations"
+    policies:
+      - policy-eso-operator
+      - policy-eso-secret-store
+    generatePolicySetPlacement: false
+    placement:
+      name: placement-policy-day2
