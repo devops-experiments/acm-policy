@@ -11,6 +11,9 @@ policyDefaults:
 placementBindingDefaults:
   name: "binding-policy-day2"
 policies:
+  - name: policy-namespace
+    manifests:
+      - path: policies/eso/config/
   - name: policy-eso-operator
     manifests:
       - path: policies/eso/operator
