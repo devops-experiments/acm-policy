@@ -13,13 +13,13 @@ placementBindingDefaults:
 policies:
   - name: policy-namespace
     manifests:
-      - path: policies/eso/config/
+      - path: policies/eso/operator/namespace.yml
   - name: policy-eso-operator
     manifests:
       - path: policies/eso/operator
   - name: policy-eso-secret-store
     manifests:
-      - path: policies/eso/config/
+      - path: policies/eso/config/eso-secret-store.yml
 policySets:
   - name: "day2"
     description: "Policy for Day 2 operations"
