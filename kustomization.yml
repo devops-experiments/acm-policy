@@ -6,11 +6,3 @@ generators:
 commonLabels:
   env: dev
 
-patches:
-  - patch: |-
-      - op: replace
-        path: /spec/predicates/requiredClusterSelector/matchExpressions
-        value: 'dev'
-    target:
-      kind: Placement
-      name: placement-policy-day2

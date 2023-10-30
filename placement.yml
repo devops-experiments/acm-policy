@@ -8,9 +8,9 @@ spec:
   - dev
   predicates:
   - requiredClusterSelector:
-        labelSelector:
-          matchExpressions:
-            - key: env
-              operator: In
-              values:
-                - dev
+      labelSelector:
+        matchExpressions:
+          - key: env
+            operator: In
+            values:
+              - dev

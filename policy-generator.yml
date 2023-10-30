@@ -5,6 +5,9 @@ metadata:
 policyDefaults:
   namespace: acm-policies
   remediationAction: enforce
+  placement:
+    placementPath: placement.yml
+    name: placement-dev
 placementBindingDefaults:
   name: "binding-policy-day2"
 policies:
@@ -24,6 +27,3 @@ policySets:
       - policy-eso-operator
       - policy-eso-secret-store
     generatePolicySetPlacement: false
-    placement:
-      placementPath: placement.yml
-      name: placement-dev
