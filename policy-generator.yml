@@ -26,4 +26,5 @@ policySets:
     policies:
       - policy-eso-operator
       - policy-eso-secret-store
+      - policy-namespace
     generatePolicySetPlacement: false
