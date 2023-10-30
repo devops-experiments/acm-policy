@@ -6,7 +6,7 @@ policyDefaults:
   namespace: acm-policies
   remediationAction: enforce
   placement:
-    placementRulePath: placement.yml
+    placementPath: placement.yml
     name: placement-dev
 placementBindingDefaults:
   name: "binding-policy-day2"
