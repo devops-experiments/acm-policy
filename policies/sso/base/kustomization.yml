@@ -1,0 +1,9 @@
+kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+
+resources:
+  - external-secret.yml
+  - operator-groupsync.yml
+  - policy-groupsync.yml
+  - group-rolebinding.yml
+
