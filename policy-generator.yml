@@ -2,29 +2,37 @@ apiVersion: policy.open-cluster-management.io/v1
 kind: PolicyGenerator
 metadata:
   name: day2-policy-generator
+
+placementBindingDefaults:
+  # Set an explicit placement binding name to use rather than rely on the default.
+  name: "day2"
 policyDefaults:
   namespace: acm-policies
   remediationAction: enforce
   placement:
-    placementPath: placement.yml
-    name: placement-dev
-placementBindingDefaults:
-  name: "binding-policy-day2"
+    
+  #orderManifests: true
+  #consolidateManifests: false
 policies:
-  - name: policy-eso-operator
+  - name: policy-eso-hub
     manifests:
-      - path: policies/eso/operator
-  - name: policy-namespace
+      - path: policies/eso/overlay/hub
+    placement:
+      name: placement-hub
+      placementPath: placement-hub.yml
+  - name: policy-eso-dev
     manifests:
-      - path: policies/eso/config/namespace.yml
-  - name: policy-eso-secret-store
+      - path: policies/eso/overlay/dev
+  - name: policy-sso-dev
     manifests:
-      - path: policies/eso/config/eso-secret-store.yml
+      - path: policies/sso/overlay/dev
+    
 policySets:
-  - name: "day2"
+  - name: "day2-cluster-policies"
     description: "Policy for Day 2 operations"
     policies:
-      - policy-eso-operator
-      - policy-eso-secret-store
-      - policy-namespace
-    generatePolicySetPlacement: false
+      - policy-eso-dev
+      - policy-sso-dev
+    placement:
+      name: placement-dev
+      placementPath: placement-dev.yml
