@@ -14,18 +14,15 @@ policyDefaults:
   #orderManifests: true
   #consolidateManifests: false
 policies:
-  - name: policy-eso-hub
-    manifests:
-      - path: policies/eso/overlay/hub
-    placement:
-      name: placement-hub
-      placementPath: placement-hub.yml
+ 
   - name: policy-eso-dev
     manifests:
       - path: policies/eso/overlay/dev
   - name: policy-sso-dev
     manifests:
       - path: policies/sso/overlay/dev
+    dependencies:
+    - name: policy-eso-dev
     
 policySets:
   - name: "day2-cluster-policies"

@@ -9,5 +9,6 @@ Cert-Manager Steps:
 1. setup lets encrypt
 2. install cert-manager through policy
 
-
-
+ESO Operator:
+1. Install ESO
+2. Dopler token
