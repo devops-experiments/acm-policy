@@ -4,17 +4,17 @@ metadata:
   name: day2-policy-generator
 
 placementBindingDefaults:
-  # Set an explicit placement binding name to use rather than rely on the default.
   name: "day2"
 policyDefaults:
   namespace: acm-policies
   remediationAction: enforce
-  placement:
-    
-  #orderManifests: true
-  #consolidateManifests: false
+ 
 policies:
  
+  - name: policy-etcd-encryption
+    manifests:
+    - path: policies/etcd-encryption
+
   - name: policy-eso-dev
     manifests:
       - path: policies/eso/overlay/dev
@@ -23,6 +23,19 @@ policies:
       - path: policies/sso/overlay/dev
     dependencies:
     - name: policy-eso-dev
+  - name: policy-certmanager-dev
+    manifests:
+      - path: policies/cert-manager/base
+    dependencies:
+    - name: policy-eso-dev
+  # - name: policy-acs-operator-dev
+  #   manifests:
+  #     - path: policies/acs/operator/overlay/dev
+  # - name: policy-acs-secured-cluster-dev
+  #   manifests:
+  #     - path: policies/acs/secured-cluster/overlay/dev
+  #   dependencies:
+  #   - name: policy-acs-operator-dev
     
 policySets:
   - name: "day2-cluster-policies"
@@ -30,6 +43,8 @@ policySets:
     policies:
       - policy-eso-dev
       - policy-sso-dev
+      - policy-acs-operator-dev
+      # - policy-acs-secured-cluster-dev
     placement:
       name: placement-dev
       placementPath: placement-dev.yml

@@ -1,9 +1,9 @@
+---
 kind: Kustomization
 apiVersion: kustomize.config.k8s.io/v1beta1
 
+namespace: stackrox
+
 resources:
   - ../../base
-  # - operator-config.yml
-  # - eso-secret-store.yml
-  # - external-secret.yml
 
