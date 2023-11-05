@@ -3,4 +3,4 @@ kind: Namespace
 metadata:
   annotations:
     openshift.io/display-name: CertManager
-  name: cert-manager
+  name: cert-manager-operator 

@@ -1,20 +1,24 @@
-apiVersion: certmanager.k8s.io/v1alpha1
+apiVersion: cert-manager.io/v1
 kind: ClusterIssuer
 metadata:
   name: letsencrypt
-  namespace: cert-manager
+  namespace: cert-manager-operator 
 spec:
   acme:
-    server: https://acme-v02.api.letsencrypt.org/directory
-    email: you@example.com
+    email: aychandr@redhat.com
+    server: https://acme-staging-v02.api.letsencrypt.org/directory
     privateKeySecretRef:
       name: letsencrypt
-    dns01:
-      providers:
-      - name: route53
+    solvers:
+    - selector:
+        dnsZones:
+          - "*.aychandr.shop"
+          - "aychandr.shop"
+      dns01:
         route53:
-          region: eu-central-1
+          region: us-east-1
+          hostedZoneID: Z07609762Q2PPYBZ4SI2X
           accessKeyID: '{{ fromSecret "external-secrets" "all-cluster-secret" "CERTMANAGER_AWS_ACCESS_KEY" }}'
           secretAccessKeySecretRef:
-            name: aws-route53-creds
-            key: awsSecretAccessKey
+            name: all-cluster-secret
+            key: CERTMANAGER_AWS_SECRET_ACCESS_KEY
