@@ -4,6 +4,7 @@ kind: Kustomization
 
 resources:
   - namespace.yml
+  - operatorgroup.yml
   - operator-certmanager.yml
   - external-secret.yml
   - clusterissuer.yml
