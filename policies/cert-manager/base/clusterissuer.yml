@@ -16,7 +16,7 @@ spec:
           - "aychandr.shop"
       dns01:
         route53:
-          region: us-east-1
+          region: us-east-2
           hostedZoneID: Z07609762Q2PPYBZ4SI2X
           accessKeyID: '{{ fromSecret "external-secrets" "all-cluster-secret" "CERTMANAGER_AWS_ACCESS_KEY" }}'
           secretAccessKeySecretRef:
