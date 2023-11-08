@@ -22,3 +22,4 @@ spec:
           secretAccessKeySecretRef:
             name: all-cluster-secret
             key: CERTMANAGER_AWS_SECRET_ACCESS_KEY
+            namespace: external-secrets
