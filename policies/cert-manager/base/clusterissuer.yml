@@ -20,5 +20,5 @@ spec:
           hostedZoneID: Z07609762Q2PPYBZ4SI2X
           accessKeyID: '{{ fromSecret "external-secrets" "all-cluster-secret" "CERTMANAGER_AWS_ACCESS_KEY" }}'
           secretAccessKeySecretRef:
-            name: all-cluster-secret
-            key: '{{ fromSecret "external-secrets" "all-cluster-secret" "CERTMANAGER_AWS_SECRET_ACCESS_KEY" }}'
+            name: aws-route53-creds
+            key: awsSecretAccessKey
