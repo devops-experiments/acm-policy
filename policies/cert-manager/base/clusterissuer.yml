@@ -18,7 +18,9 @@ spec:
         route53:
           region: us-east-2
           hostedZoneID: Z0584266SPRMZ98JGGS4
-          accessKeyID: '{{ fromSecret "external-secrets" "all-cluster-secret" "CERTMANAGER_AWS_ACCESS_KEY" }}'
+          accessKeyIDSecretRef:
+            name: aws-route53-creds
+            key: awsAccessKey
           secretAccessKeySecretRef:
             name: aws-route53-creds
             key: awsSecretAccessKey
