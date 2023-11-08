@@ -17,7 +17,7 @@ spec:
       dns01:
         route53:
           region: us-east-2
-          hostedZoneID: Z07609762Q2PPYBZ4SI2X
+          hostedZoneID: Z0584266SPRMZ98JGGS4
           accessKeyID: '{{ fromSecret "external-secrets" "all-cluster-secret" "CERTMANAGER_AWS_ACCESS_KEY" }}'
           secretAccessKeySecretRef:
             name: aws-route53-creds
