@@ -21,5 +21,4 @@ spec:
           accessKeyID: '{{ fromSecret "external-secrets" "all-cluster-secret" "CERTMANAGER_AWS_ACCESS_KEY" }}'
           secretAccessKeySecretRef:
             name: all-cluster-secret
-            key: CERTMANAGER_AWS_SECRET_ACCESS_KEY
-            namespace: external-secrets
+            key: '{{ fromSecret "external-secrets" "all-cluster-secret" "CERTMANAGER_AWS_SECRET_ACCESS_KEY" }}'
