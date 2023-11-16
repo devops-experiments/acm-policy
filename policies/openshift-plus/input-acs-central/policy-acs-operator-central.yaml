@@ -26,7 +26,6 @@ spec:
   name: rhacs-operator
   source: redhat-operators
   sourceNamespace: openshift-marketplace
-  startingCSV: rhacs-operator.v4.2.2
 ---
 apiVersion: platform.stackrox.io/v1alpha1
 kind: Central
