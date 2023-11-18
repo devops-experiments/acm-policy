@@ -17,7 +17,7 @@ policies:
      - path: policies/eso/overlay/hub
     placement:
       name: placement-hub
-      placementPath: placement-hub.yml
+      placementPath: placement/hub-placement.yml
  
   - name: policy-etcd-encryption
     manifests:
