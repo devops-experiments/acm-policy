@@ -1,0 +1,9 @@
+kind: Kustomization
+apiVersion: kustomize.config.k8s.io/v1beta1
+
+resources:
+  - policy-acs-central-ca-bundle.yml
+  - policy-acs-sync-resources.yaml
+  - policy-advanced-managed-cluster-security.yaml
+  - policy-advanced-managed-cluster-status.yaml
+
