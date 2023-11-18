@@ -84,12 +84,12 @@ policySets:
       the components that install to the Advanced Cluster Management hub.
     name: acs-hub
     placement:
-      placementPath: ../placement/hub-placement.yaml
+      placementPath: placement/hub-placement.yaml
   - description: The OpenShift Platform Plus policy set applies several policies
       that install the OpenShift Platform Plus products using best practices
       that allow them to work well together. This policy set is focused on 
       the components that install to every managed cluster.
     name: acs-clusters
     placement:
-      placementPath: policies/placement/clusters-placement.yaml
+      placementPath: placement/clusters-placement.yaml
 
