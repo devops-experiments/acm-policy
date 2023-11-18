@@ -36,17 +36,8 @@ policies:
       - path: policies/cert-manager/base
     dependencies:
     - name: policy-eso-dev
-  # - name: policy-acs-operator-dev
-  #   manifests:
-  #     - path: policies/acs/operator/overlay/dev
-  # - name: policy-acs-secured-cluster-dev
-  #   manifests:
-  #     - path: policies/acs/secured-cluster/overlay/dev
-  #   dependencies:
-  #   - name: policy-acs-operator-dev
     
 policySets:
- 
   - name: "day2-cluster-policies"
     description: "Policy for Day 2 operations"
     policies:
@@ -55,4 +46,4 @@ policySets:
       - policy-certmanager-dev
     placement:
       name: placement-dev
-      placementPath: placement-dev.yml
+      placementPath: placement/dev-placement.yml

@@ -1,0 +1,95 @@
+apiVersion: policy.open-cluster-management.io/v1
+kind: PolicyGenerator
+metadata:
+  name: policy-acs
+placementBindingDefaults:
+  name: binding-policy-acs-hub
+policyDefaults:
+  categories:
+    - CM Configuration Management
+  controls: 
+    - CM-2 Baseline Configuration
+  namespace: acm-policies
+  policySets:
+    - acs-hub
+  remediationAction: enforce
+  severity: medium
+  standards:
+    - NIST SP 800-53
+policies:
+# ACS Policies - start
+- name: policy-acs-operator-central
+  categories:
+    - SC System and Communications Protection
+  controls: 
+    - SC-1 Policy and Procedures
+  manifests:
+    - path: policies/acs/input-acs-central/policy-acs-operator-central.yaml
+- name: policy-acs-central-status
+  categories:
+    - SI System and Information Integrity
+  controls:
+    - SI-5 Security Alerts Advisories and Directives
+  dependencies:
+    - name: policy-acs-operator-central
+  manifests:
+    - path: policies/acs/input-acs-central/policy-acs-central-status.yaml
+  remediationAction: inform
+- name: policy-acs-central-ca-bundle
+  categories:
+    - SI System and Information Integrity
+  controls:
+    - SI-5 Security Alerts Advisories and Directives
+  dependencies:
+    - name: policy-acs-central-status
+  manifests:
+    - path: policies/acs/input-sensor/policy-acs-central-ca-bundle.yaml
+- name: policy-acs-sync-resources
+  categories:
+    - SI System and Information Integrity
+  consolidateManifests: false
+  controls:
+    - SI-5 Security Alerts Advisories and Directives
+  dependencies:
+    - name: policy-acs-central-status
+  manifests:
+    - path: policies/acs/input-sensor/policy-acs-sync-resources.yaml
+- name: policy-advanced-managed-cluster-security
+  categories:
+    - SI System and Information Integrity
+  consolidateManifests: false
+  controls:
+    - SI-5 Security Alerts Advisories and Directives
+  manifests:
+    - path: policies/acs/input-sensor/policy-advanced-managed-cluster-security.yaml
+  policySets:
+    - acs-clusters
+- name: policy-advanced-managed-cluster-status
+  categories:
+    - SI System and Information Integrity
+  controls:
+    - SI-5 Security Alerts Advisories and Directives
+  manifests:
+    - path: policies/acs/input-sensor/policy-advanced-managed-cluster-status.yaml
+  policySets:
+    - acs-hub
+    - acs-clusters
+  remediationAction: inform
+
+# Compliance Operator Policies - end
+policySets:
+  - description: The OpenShift Platform Plus policy set applies several policies
+      that will install the OpenShift Platform Plus products using best practices
+      that allow them to work well together. This policy set is focused on 
+      the components that install to the Advanced Cluster Management hub.
+    name: acs-hub
+    placement:
+      placementPath: policies/placement/hub-placement.yaml
+  - description: The OpenShift Platform Plus policy set applies several policies
+      that install the OpenShift Platform Plus products using best practices
+      that allow them to work well together. This policy set is focused on 
+      the components that install to every managed cluster.
+    name: acs-clusters
+    placement:
+      placementPath: policies/placement/clusters-placement.yaml
+
