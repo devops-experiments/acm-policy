@@ -45,6 +45,8 @@ policies:
       - SC-1 Policy and Procedures
     manifests:
       - path: policies/acs/input-acs-central/policy-acs-operator-central.yaml
+    policySets:
+      - placement-hub
   - name: policy-acs-central-status
     categories:
       - SI System and Information Integrity
@@ -55,6 +57,8 @@ policies:
     manifests:
       - path: policies/acs/input-acs-central/policy-acs-central-status.yaml
     remediationAction: inform
+    policySets:
+      - placement-hub
   - name: policy-acs-central-ca-bundle
     categories:
       - SI System and Information Integrity
@@ -64,6 +68,8 @@ policies:
       - name: policy-acs-central-status
     manifests:
       - path: policies/acs/input-sensor/policy-acs-central-ca-bundle.yaml
+    policySets:
+      - placement-hub
   - name: policy-acs-sync-resources
     categories:
       - SI System and Information Integrity
