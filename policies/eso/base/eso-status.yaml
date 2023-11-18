@@ -1,9 +1,0 @@
-apiVersion: apps/v1
-kind: Deployment
-metadata:
-  name: external-secrets-operator-controller-manager
-  namespace: openshift-operators
-status:
-  conditions:
-    - status: "True"
-      type: Available

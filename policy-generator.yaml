@@ -26,6 +26,10 @@ policies:
   - name: policy-eso-dev
     manifests:
       - path: policies/eso/overlay/dev
+  - name: policy-eso-status-dev
+    manifests:
+      - path: policies/eso/eso-status.yaml
+    remediationAction: inform
   - name: policy-sso-dev
     manifests:
       - path: policies/sso/overlay/dev
