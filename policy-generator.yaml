@@ -34,12 +34,12 @@ policies:
     manifests:
       - path: policies/sso/overlay/dev
     dependencies:
-    - name: policy-eso-dev
+    - name: policy-eso-status-dev
   - name: policy-certmanager-dev
     manifests:
       - path: policies/cert-manager/base
     dependencies:
-    - name: policy-eso-dev
+    - name: policy-eso-status-dev
 
 #ACS
   - name: policy-acs-operator-central
