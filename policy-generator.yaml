@@ -80,6 +80,10 @@ policies:
     consolidateManifests: false
     controls:
       - SI-5 Security Alerts Advisories and Directives
+    dependencies:
+      - name: policy-acs-central-status
+    policySets:
+      - placement-hub
     manifests:
       - path: policies/acs/input-sensor/policy-acs-sync-resources.yaml
   - name: policy-advanced-managed-cluster-security
